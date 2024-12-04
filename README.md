@@ -1,3 +1,3 @@
 # BankDash
 BankDash est une application de gestion bancaire développée à partir d'une maquette récupérée sur Figma, l'application permet aux utilisateurs de visualiser leurs comptes, suivre leurs transactions, gérer leurs cartes de crédit, et effectuer des transferts rapides. L'application est divisée en une interface utilisateur (frontend) développée avec Angular, un backend en Spring Boot avec une base de données MongoDB, et des services de déploiement et CI/CD avec Docker, Jenkins, et AWS. J'ai récupéré la maquette sur Figma via le lien suivant : 
-\href{https://www.figma.com/design/bK80xK9xZW6RQUvHQ3Yiur/BankDash---Dashboard-UI-Kit---Admin-Template-Dashboard---Admin-Dashboard-(Community)?node-id=0-1&node-type=canvas&t=OQnbAdPIexaj7feC-0}{BankDash}
+https://www.figma.com/design/bK80xK9xZW6RQUvHQ3Yiur/BankDash---Dashboard-UI-Kit---Admin-Template-Dashboard---Admin-Dashboard-(Community)?node-id=0-1&node-type=canvas&t=OQnbAdPIexaj7feC-0}{BankDash
