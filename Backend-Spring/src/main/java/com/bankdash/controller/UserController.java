@@ -8,14 +8,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
@@ -23,6 +33,9 @@ public class UserController {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+
+    @Value("${user.profile-picture.upload-dir}")
+    private String uploadDir;
 
     @GetMapping
     public List<UserDTO> getAllUsers() {
@@ -35,13 +48,50 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDTO createUser(@RequestBody UserCreateDTO userCreateDTO) {
+    public UserDTO createUser(@RequestParam String username,
+                              @RequestParam String password,
+                              @RequestParam String email,
+                              @RequestParam String role,
+                              @RequestParam(required = false) MultipartFile profilePicture) throws IOException {
+        UserCreateDTO userCreateDTO = new UserCreateDTO();
+        userCreateDTO.setUsername(username);
+        userCreateDTO.setPassword(password);
+        userCreateDTO.setEmail(email);
+        userCreateDTO.setRole(role);
+        String profilePictureName = null;
+        if (profilePicture != null && !profilePicture.isEmpty()) {
+            profilePictureName = saveProfilePicture(profilePicture);
+        }
+        userCreateDTO.setProfilePicture(profilePictureName);
         return userService.createUser(userCreateDTO);
     }
 
     @PutMapping("/{id}")
-    public UserDTO updateUser(@PathVariable String id, @RequestBody UserCreateDTO userCreateDTO) {
+    public UserDTO updateUser(@PathVariable String id,
+                              @RequestParam String username,
+                              @RequestParam String password,
+                              @RequestParam String email,
+                              @RequestParam String role,
+                              @RequestParam(required = false) MultipartFile profilePicture) throws IOException {
+        UserCreateDTO userCreateDTO = new UserCreateDTO();
+        userCreateDTO.setUsername(username);
+        userCreateDTO.setPassword(password);
+        userCreateDTO.setEmail(email);
+        userCreateDTO.setRole(role);
+        String profilePictureName = null;
+        if (profilePicture != null && !profilePicture.isEmpty()) {
+            profilePictureName = saveProfilePicture(profilePicture);
+        }
+        userCreateDTO.setProfilePicture(profilePictureName);
         return userService.updateUser(id, userCreateDTO);
+    }
+
+    private String saveProfilePicture(MultipartFile profilePicture) throws IOException {
+        String fileName = System.currentTimeMillis() + "_" + profilePicture.getOriginalFilename();
+        Path path = Paths.get(uploadDir, fileName);
+        Files.createDirectories(path.getParent());
+        profilePicture.transferTo(path);
+        return fileName;
     }
 
     @DeleteMapping("/{id}")
@@ -50,15 +100,15 @@ public class UserController {
     }
 
     @PostMapping("/getToken")
-    public String authenticateAndGetToken(@RequestBody AuthenticationRequest authRequest) {
+    public ResponseEntity<Map<String, String>> authenticateAndGetToken(@RequestBody AuthenticationRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
 
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(authRequest.getUsername());
+            return ResponseEntity.ok(Collections.singletonMap("token", jwtService.generateToken(authRequest.getUsername())));
         }
 
-        throw new UsernameNotFoundException("invalid user details.");
+        throw new UsernameNotFoundException("Invalid user details.");
     }
 
     @Data

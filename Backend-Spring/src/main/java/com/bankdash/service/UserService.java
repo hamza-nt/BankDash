@@ -45,8 +45,10 @@ public class UserService {
         user.setPassword(hashedPassword);
         user.setEmail(userCreateDTO.getEmail());
         user.setRole(userCreateDTO.getRole());
-        user.setProfilePicture(userCreateDTO.getProfilePicture());
         user.setCreatedAt(LocalDateTime.now());
+        if (userCreateDTO.getProfilePicture() != null) {
+            user.setProfilePicture(userCreateDTO.getProfilePicture());
+        }
 
         user = userRepository.save(user);
         return UserMapper.INSTANCE.toUserDTO(user);
@@ -63,7 +65,10 @@ public class UserService {
         existingUser.setUsername(userCreateDTO.getUsername());
         existingUser.setEmail(userCreateDTO.getEmail());
         existingUser.setRole(userCreateDTO.getRole());
-        existingUser.setProfilePicture(userCreateDTO.getProfilePicture());
+
+        if (userCreateDTO.getProfilePicture() != null) {
+            existingUser.setProfilePicture(userCreateDTO.getProfilePicture());
+        }
 
         existingUser = userRepository.save(existingUser);
         return UserMapper.INSTANCE.toUserDTO(existingUser);
