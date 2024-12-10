@@ -1,20 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserDTO } from '../../models/userDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8081/users/getToken';
+  private apiUrl = 'http://localhost:8081/users';
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
     const body = { username, password };
-    return this.http.post<any>(this.apiUrl, body);
+    return this.http.post<any>(`${this.apiUrl}/getToken`, body);
+  }
+
+  logout(): void {
+    const token = this.getToken();
+    if (token) {
+      this.http
+        .post(`${this.apiUrl}/logout`, {}, { headers: { Authorization: `Bearer ${token}` } })
+        .subscribe({
+          next: () => console.log('Déconnexion côté serveur réussie'),
+          error: (err) => console.error('Erreur lors de la déconnexion côté serveur', err),
+        });
+    }
+    this.clearToken();
   }
 
   saveToken(token: string): void {
@@ -26,7 +38,11 @@ export class AuthService {
   }
 
   signup(formData: FormData): Observable<any> {
-    return this.http.post<any>('http://localhost:8081/users', formData);
+    return this.http.post<any>(this.apiUrl, formData);
+  }
+
+  clearToken(): void {
+    localStorage.removeItem('jwtToken');
   }
 
 }

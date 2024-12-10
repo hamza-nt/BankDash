@@ -1,0 +1,314 @@
+/* Style CSS pour le header */
+.header {
+  position: absolute;
+  width: 1440px;
+  height: 101px;
+  left: 0px;
+  top: 0px;
+}
+
+/* Rectangle 42 */
+.rectangle-42 {
+  position: absolute;
+  width: 1190px;
+  height: 1px;
+  left: 250px;
+  top: 100px;
+}
+
+/* Group 336 */
+.group-336 {
+  position: absolute;
+  width: 1362px;
+  height: 60px;
+  left: 38px;
+  top: 20px;
+}
+
+/* Rectangle 229 */
+.rectangle-229 {
+  position: absolute;
+  width: 1440px;
+  height: 100px;
+  left: 0px;
+  top: 0px;
+  background: #FFFFFF;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  width: 183px;
+  height: 36px;
+  left: 5px;
+  top: 31px;
+  display: flex;
+  align-items: center;
+}
+
+/* BankDash */
+.bankdash {
+  width: 138px;
+  height: 32px;
+  left: 83px;
+  top: 35px;
+  font-family: 'Mont', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 25px;
+  line-height: 32px;
+  color: #343C6A;
+  margin-left: 10px;
+}
+
+/* icône */
+.icon {
+  width: 36px;
+  height: 36px;
+  background: url('/credit-card.png') no-repeat center center;
+  background-size: contain;
+}
+
+/* Group 9 */
+.group-9 {
+  position: relative;
+  width: 1110px;
+  height: 60px;
+  left: 290px;
+  top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Overview */
+.overview {
+  width: 129px;
+  height: 34px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+  color: #343C6A;
+  margin-left: 30px;
+}
+
+/* Group 8 */
+.group-8 {
+  width: 255px;
+  height: 50px;
+  display: flex;
+  margin-left: 320px;
+  align-items: center;
+}
+
+/* Rectangle 19 */
+.rectangle-19 {
+  width: 255px;
+  height: 50px;
+  background: #F5F7FA;
+  border-radius: 40px;
+}
+
+/* magnifying-glass 1 */
+.magnifying-glass {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  background: url('/search.png') no-repeat center center;
+  background-size: contain;
+}
+
+/* Search for something */
+.search-for-something {
+  position: absolute;
+  width: 152px;
+  height: 18px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  margin-left: 50px;
+  color: #8BA3CB;
+}
+
+/* Group 4 */
+.group-4 {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ellipse 3 */
+.ellipse-3 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #F5F7FA;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* settings 1 */
+.settings-1 {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Vector 1 */
+.vector-1 {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  background: url('/vector1.png') no-repeat center center;
+  background-size: contain;
+  z-index: 2; 
+}
+
+/* Vector 2 */
+.vector-2 {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: url('/vector2.png') no-repeat center center;
+  background-size: contain;
+  z-index: 1;
+}
+
+/* Group 3 */
+.group-3 {
+  width: 50px;
+  height: 50px;
+  margin-left: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F7FA;
+  border-radius: 50%;
+}
+
+/* Ellipse 2 */
+.ellipse-2 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #F5F7FA;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Notification Icon */
+.notification-icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+  background: url('/notification-icon.png') no-repeat center center;
+  z-index: 2;
+}
+
+/* Vector 3 */
+.vector-3 {
+  position: absolute;
+  left: 54.1%;
+  right: 4.23%;
+  top: 0%;
+  bottom: 58.33%;
+  background: url('/vector3.png') no-repeat center center;
+  background-size: contain;
+  z-index: 3;
+}
+
+/* Vector 4 */
+.vector-4 {
+  position: absolute;
+  left: 4.1%;
+  right: 12.56%;
+  top: 1.85%;
+  bottom: 12.5%;
+  background: url('/vector4.png') no-repeat center center;
+  background-size: contain;
+  z-index: 3;
+}
+
+/* Vector 5 */
+.vector-5 {
+  position: absolute;
+  left: 30.14%;
+  right: 38.61%;
+  top: 81%;
+  bottom: 0%;
+  background: url('/vector5.png') no-repeat center center;
+  background-size: contain;
+  z-index: 3;
+}
+
+/* Mask Group */
+.mask-group {
+  width: 60px;
+  height: 60px;
+  margin-left: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* pexels-image */
+.pexels-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url('/hamza.png') no-repeat center center;
+  background-size: cover;
+  z-index: 1;
+}
+
+/* Ellipse 1 */
+.ellipse-1 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.logout-container {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #e60000;
+}

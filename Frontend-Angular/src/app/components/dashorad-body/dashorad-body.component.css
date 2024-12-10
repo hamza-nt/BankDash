@@ -1,0 +1,11 @@
+/* dashboard-body */
+
+.dashboard-body {
+    position: absolute;
+    width: 1190px;
+    height: 1083px;
+    left: 252px;
+    top: 120px;
+    background: #F5F7FA;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
