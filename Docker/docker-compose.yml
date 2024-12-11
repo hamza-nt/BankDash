@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: angularcontainer
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile.angular
+    image: bankdash:v1
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - internalnet
+
+  backend:
+    container_name: springcontainer
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile.spring
+    image: bankdash-backend:v1
+    ports:
+      - 8080:8080
+    networks:
+      - internalnet
+
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge

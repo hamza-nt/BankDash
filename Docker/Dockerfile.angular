@@ -1,0 +1,17 @@
+FROM node:20.18.0-alpine AS build
+
+WORKDIR /app
+
+COPY ../Frontend-Angular/package*.json ./
+
+RUN npm install 
+
+COPY ../Frontend-Angular /app
+
+RUN npm run build
+
+FROM nginx:stable
+
+COPY --from=build /app/dist/frontend-angular/browser /usr/share/nginx/html
+
+EXPOSE 80

@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://www.bankdash.com'
+    API_BASE_URL: 'http://10.0.200.198:8080'
 };

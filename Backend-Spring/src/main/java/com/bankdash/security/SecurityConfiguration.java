@@ -32,7 +32,7 @@ public class SecurityConfiguration {
     private UserDetailsServiceImpl userDetailsServiceImpl;
 
     @Autowired
-    private CorsWebConfiguration corsWebConfiguration; // Injection de la configuration CORS
+    private CorsWebConfiguration corsWebConfiguration;
 
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
